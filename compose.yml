@@ -4,10 +4,10 @@ services:
     container_name: mon-projet-mariadb
     restart: unless-stopped
     environment:
-      MARIADB_ROOT_PASSWORD: Password
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Definir DB_ROOT_PASSWORD}
       MARIADB_DATABASE: resmat
-      MARIADB_USER: resmat
-      MARIADB_PASSWORD: Password
+      MARIADB_USER: ${DB_USER:-resmat}
+      MARIADB_PASSWORD: ${DB_PASSWORD:?Definir DB_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
