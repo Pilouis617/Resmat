@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Parametres locaux de connexion
+.env
+
