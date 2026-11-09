@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Catégories</title>
+    <style>
+        body { font-family: sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: .5rem; text-align: left; }
+        .ok { color: green; } .err { color: red; }
+        form { display: inline; }
+    </style>
+</head>
+<body>
+    <h1>Catégories</h1>
+
+    {{#message}}<p class="ok">{{.}}</p>{{/message}}
+    {{#erreur}}<p class="err">{{.}}</p>{{/erreur}}
+
+    <p><a href="/categories/new">Ajouter une catégorie</a></p>
+
+    <table>
+        <thead>
+            <tr><th>Nom</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {{#categories}}
+            <tr>
+                <td>{{nom}}</td>
+                <td>
+                    <a href="/categories/{{id}}/edit">Modifier</a>
+                    <form method="post" action="/categories/{{id}}/delete" onsubmit="return confirm('Supprimer cette catégorie ?');">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {{/categories}}
+        </tbody>
+    </table>
+    {{^categories}}<p>Aucune catégorie pour le moment.</p>{{/categories}}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>{{titre}}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 2rem auto; padding: 0 1rem; }
+        input[type=text] { width: 100%; padding: .4rem; margin: .3rem 0; box-sizing: border-box; }
+        .err { color: red; }
+    </style>
+</head>
+<body>
+    <h1>{{titre}}</h1>
+
+    <form method="post" action="/categories/save">
+        {{#categorie.id}}<input type="hidden" name="id" value="{{.}}">{{/categorie.id}}
+
+        <label for="nom">Nom *</label>
+        <input type="text" id="nom" name="nom" value="{{categorie.nom}}">
+        {{#erreurNom}}<p class="err">{{.}}</p>{{/erreurNom}}
+
+        <button type="submit">Enregistrer</button>
+        <a href="/categories">Annuler</a>
+    </form>
+</body>
+</html>
